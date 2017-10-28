@@ -1,0 +1,86 @@
+doctype
+html
+  head
+    title Список проектов
+    link(rel="stylesheet" href="./css/main.css")
+  body
+    .modal
+      .modal-overlay
+      .modal-container
+        .modal-container__close.
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><path fill-rule="evenodd" d="M13.969 1.406L8.39 6.984l5.578 5.579-1.406 1.406L6.984 8.39l-5.578 5.578L0 12.563l5.578-5.579L0 1.406 1.406 0l5.578 5.578L12.563 0z"/></svg>
+
+        .modal-container__title Новый проект
+        .modal-container__content
+          form
+            input(type='text' placeholder='Название проекта').input
+            button.btn._primary Создать
+          
+    #app.container
+      h1 Список проектов
+      .project-filters
+        input(type='text' placeholder='Поиск по вакансиям').input
+        label.label
+          input(type='checkbox').checkbox
+          span
+          | Только открытые
+        button.btn._primary Добавить проект
+      ul.entries-list
+        li.entry
+          .entry__title Название первого проекта
+          .entry-details
+            .entry-details__count 34 вакансии
+            button.text-btn._primary Добавить вакансию
+            .entry-details__buttons
+              button.text-btn Закрыть проект
+              button.text-btn Удалить
+
+        li.entry._toggled
+          .entry__title Название второго проекта
+          .entry-details
+            .entry-details__count 34 вакансии
+            button.text-btn._primary Добавить вакансию
+            .entry-details__buttons
+              button.text-btn Закрыть проект
+              button.text-btn Удалить
+          ul.entry-childs
+            li.entry._child
+              .entry__title Первая вакансия
+              .entry-details
+                .entry-details__status Вакансия открыта, идет подбор кандидатов
+                .entry-details__buttons
+                  button.text-btn Закрыть вакансию
+                  button.text-btn Удалить
+            li.entry._child
+              .entry__title Первая вакансия
+              .entry-details
+                .entry-details__status Вакансия открыта, идет подбор кандидатов
+                .entry-details__buttons
+                  button.text-btn Закрыть вакансию
+                  button.text-btn Удалить
+            li.entry._child
+              .entry__title Первая вакансия
+              .entry-details
+                .entry-details__status._closed Вакансия закрыта, сотрудник нанят
+                .entry-details__buttons
+                  button.text-btn._primary Открыть вакансию
+                  button.text-btn Удалить    
+
+        li.entry
+          .entry__title Название первого проекта
+          .entry-details
+            .entry-details__count 34 вакансии
+            button.text-btn._primary Добавить вакансию
+            .entry-details__buttons
+              button.text-btn Закрыть проект
+              button.text-btn Удалить
+
+        li.entry._closed
+          .entry__title Очень-очень длинное название третьего проекта, которое переносится на две строки
+          .entry-details
+            .entry-details__count 55 вакансий
+            .entry-details__status._closed Проект закрыт, сотрудники наняты
+            .entry-details__buttons
+              button.text-btn._primary открыть проект
+              button.text-btn Удалить
+

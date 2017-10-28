@@ -1,0 +1,63 @@
+.entry
+  border-radius: 3px
+  background-color: #ffffff
+  box-shadow: $shadow
+  display block
+  margin 0
+  padding 14px 16px 16px
+  + .entry
+    margin 8px 0 0
+  &._toggled
+    box-shadow $shadow-active
+    margin 16px 0
+  &._closed
+    .entry__title
+    .entry-details__count
+      color $c-secondary-text
+  &__title
+    font 23px/1.39 $roboto
+    max-width 615px
+  &-details
+    display flex
+    align-items center
+    margin 6px 0 0
+    &__count
+      margin 0 16px 0 0
+    &__buttons
+      display flex
+      align-items center
+      justify-content space-between
+      margin 0 0 0 auto
+      width 249px
+    &__status
+      color $c-secondary-text
+      font-size 13px
+      line-height 1.23
+      padding 0 0 0 28px
+      position relative
+      &::before
+        position absolute
+        top 50%
+        left 0
+        background url('../img/search.png') 50% no-repeat / 16px
+        content ''
+        display block
+        height 24px
+        margin -12px 0 0
+        width 20px
+      &._closed
+        &::before
+          background-image url('../img/check.png')
+      
+  &-childs
+    margin 0
+    padding 0
+  &._child
+    border-top 1px solid $c-lines
+    box-shadow none
+    margin 12px 0 0
+    padding 16px 0 0
+    .entry__title
+      font-size 16px
+      line-height 1.5
+      

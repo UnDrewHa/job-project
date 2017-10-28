@@ -1,0 +1,92 @@
+.input
+  border-radius: 2px
+  background-color: #ffffff
+  border: solid 1px $c-border
+  color $c-main-text
+  height: 40px
+  font 16px/1.5 $roboto
+  padding 0 16px
+  width: 340px
+  &:hover
+  &:focus
+    border-color $c-border-hover
+    outline none
+  &::placeholder
+    color $c-placeholder
+    font 16px/1.5 $roboto
+  &._error
+    border-color $c-border-error
+    + div
+      color $c-border-error
+      font 12px/1.33 $roboto
+
+.btn
+  border 0
+  border-radius: 2px
+  box-shadow: $shadow
+  cursor pointer
+  height: 36px
+  font 500 14px/1.14 $roboto
+  letter-spacing .5px
+  outline none
+  padding 10px 34px
+  text-align center
+  text-transform uppercase
+  transition background-color .1s ease
+  &._primary
+    color #ffffff
+    background-color $c-btn
+    &:hover
+      background-color $c-btn-hover
+    &:active
+      background-color $c-btn-active
+      
+.text-btn
+  background none
+  border 0
+  color $c-text-btn
+  cursor pointer
+  display inline-block
+  height 24px
+  font 500 14px/1.14 $roboto
+  letter-spacing: 0.5px
+  outline none
+  padding 0
+  text-transform uppercase
+  transition color .1s ease
+  &:hover
+    color $c-text-btn-hover
+  &:active  
+    color $c-text-btn-active
+  &._primary
+    color $c-accent
+    &:hover
+      color $c-accent-hover
+    &:active  
+      color $c-accent-active
+
+.label
+  display inline-flex
+  align-items center
+  cursor pointer
+  user-select none
+
+.checkbox
+  display none
+  + span
+    background url('../img/off-normal.svg') 50% no-repeat
+    display block
+    height 24px
+    margin 0 8px 0 0
+    transition background-image .1s ease
+    width 24px
+    &:active
+      background-image url('../img/off-pressed.svg')
+  &:checked
+    + span
+      background-image url('../img/on-normal.svg')
+      
+
+
+
+  
