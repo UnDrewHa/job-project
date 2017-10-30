@@ -17,7 +17,51 @@ const initialState = {
         {
           id: 1,
           name: 'Вторая вакансия',
+          status: false
+        },
+        {
+          id: 2,
+          name: 'Третья вакансия',
           status: true
+        }
+      ]
+    },
+    {
+      id: 1,
+      name: 'Первый проект',
+      status: true,
+      vacancies: [
+        {
+          id: 0,
+          name: 'Первая вакансия',
+          status: false
+        },
+        {
+          id: 1,
+          name: 'Вторая вакансия',
+          status: true
+        },
+        {
+          id: 2,
+          name: 'Третья вакансия',
+          status: false
+        }
+      ]
+    },
+    {
+      id: 2,
+      name: 'Первый проект',
+      status: true,
+      vacancies: [
+        {
+          id: 0,
+          name: 'Первая вакансия',
+          status: true
+        },
+        {
+          id: 1,
+          name: 'Вторая вакансия',
+          status: false
         },
         {
           id: 2,
