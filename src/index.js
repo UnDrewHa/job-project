@@ -1,18 +1,32 @@
-import _ from 'lodash';
-import printMe from './print';
+import * as actions from './actions/index';
+import mainReducer from './reducers/index';
+import { createStore } from 'redux';
 
-function component() {
-  var element = document.createElement('div');
-  var btn = document.createElement('button');
+const initialState = {
+  statusFilter: '',
+  nameFilter: '',
+  projects: []
+};
 
-  // Lodash, currently included via a script, is required for this line to work
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  btn.innerHTML = 'Click me!!';
-  btn.onclick = printMe;
+const store = createStore(mainReducer, initialState);
 
-  element.appendChild(btn);
+console.log(store.getState());
 
-  return element;
-}
+let unsubscribe = store.subscribe(() => {
+  console.log(store.getState());
+});
 
-document.body.appendChild(component());
+store.dispatch(actions.addProject('Первый проект', 0));
+store.dispatch(actions.addProject('Второй проект', 1));
+store.dispatch(actions.addProject('Третий проект', 2));
+store.dispatch(actions.removeProject(1));
+store.dispatch(actions.removeProject(2));
+store.dispatch(actions.addVacancy('Первая вакансия', 0, 0));
+store.dispatch(actions.addVacancy('Вторая вакансия', 0, 1));
+store.dispatch(actions.addVacancy('Третья вакансия', 0, 2));
+store.dispatch(actions.toggleProject(0));
+store.dispatch(actions.toggleProject(0));
+store.dispatch(actions.filterVacancyByName('перв'));
+store.dispatch(actions.filterVacancyByStatus(true));
+
+unsubscribe();

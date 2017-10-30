@@ -7,15 +7,17 @@ var gulp = require('gulp'),
     cleancss = require('gulp-clean-css'),
     notify = require("gulp-notify"),
     cache = require('gulp-cached'),
-    rigger = require('gulp-rigger'),
     reload = browserSync.reload,
     gulpif = require('gulp-if'),
     argv = require('yargs').argv,
     sourcemaps = require('gulp-sourcemaps'),
     webpack = require('webpack'),
-    webpackConfig = require('./webpack.config.js'),
-    gutil = require("gulp-util"),
-    svgSprite = require('gulp-svg-sprite');
+    webpackConfig = require('./webpack.config.dev.js'),
+    gutil = require("gulp-util");
+
+  if (argv.prod) {
+    webpackConfig = require('./webpack.config.prod.js');
+  }
 
   var path = {
     build: {
