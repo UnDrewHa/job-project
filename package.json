@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development gulp",
-    "build": "NODE_ENV=production gulp --prod"
+    "start": "gulp",
+    "build": "gulp --prod"
   },
   "keywords": [],
   "author": "",
@@ -30,6 +30,7 @@
     "gulp-watch": "^4.3.11",
     "html-webpack-plugin": "^2.30.1",
     "lodash": "^4.17.4",
+    "normalizr": "^3.2.4",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
