@@ -6,27 +6,6 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import initialState from './data/data';
 
-
-// import { normalize, schema } from 'normalizr';
-
-
-// const vacancy = new schema.Entity('vacancies');
-
-// const project = new schema.Entity('projects', { 
-//   vacancies: [ vacancy ]
-// });
-
-// const mySchema = {
-//   statusFilter: '',
-//   nameFilter: '',
-//   projects: [ project ]
-// };
-
-// const normalizedData = normalize(initialState, mySchema);
-
-// console.log(normalizedData);
-
-
 const store = createStore(mainReducer, initialState);
 
 ReactDOM.render(

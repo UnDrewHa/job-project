@@ -7,9 +7,16 @@
   padding 14px 16px 16px
   + .entry
     margin 8px 0 0
+  &-childs
+    display block
+    margin 0
+    padding 0
+      
   &._toggled
     box-shadow $shadow-active
     margin 16px 0
+    .entry-childs
+      display block
   &._closed
     .entry__title
     .entry-details__count
@@ -49,9 +56,7 @@
         &::before
           background-image url('../img/check.png')
       
-  &-childs
-    margin 0
-    padding 0
+  
   &._child
     border-top 1px solid $c-lines
     box-shadow none

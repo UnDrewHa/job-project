@@ -1,5 +1,5 @@
 const data = {
-  statusFilter: '',
+  statusFilter: 'all',
   nameFilter: '',
   projects: [
     {
@@ -15,7 +15,7 @@ const data = {
         {
           id: '1-234',
           name: 'Frontend-разработчик',
-          status: true
+          status: false
         },
         {
           id: '1-345',
@@ -25,7 +25,7 @@ const data = {
         {
           id: '1-456',
           name: 'Менеджер продукта',
-          status: true
+          status: false
         },
         {
           id: '1-567',
@@ -73,12 +73,12 @@ const data = {
     {
       id: '567',
       name: 'Отдел маркетинга',
-      status: true,
+      status: false,
       vacancies: [
         {
           id: '5-123',
           name: 'Senior Copywriter',
-          status: true
+          status: false
         }
       ]
     }

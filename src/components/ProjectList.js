@@ -1,10 +1,10 @@
 import React from 'react';
 import Project from './Project';
 
-const ProjectList = ({ projects }) => (
+const ProjectList = (props) => (
   <ul className="entries-list">
-    { projects.map(item => (
-        <Project key={item.id} project={item} />
+    { props.projects.map(item => (
+        <Project key={item.id} project={item} {...props} />
       ))
     }
   </ul>

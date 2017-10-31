@@ -89,7 +89,7 @@ function getIndex (arr, id) {
 function toggleAllVacancies (items) {
   return items.map(item => {
     return Object.assign({}, item, {
-      status: !item.status
+      status: false
     });
   });
 }

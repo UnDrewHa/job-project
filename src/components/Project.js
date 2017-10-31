@@ -1,19 +1,47 @@
 import React from 'react';
-import VacancyList from './VacancyList';
+import Vacancy from './Vacancy';
+import {formatVacancyCount} from '../helpers/';
+import TextButton from './TextButton';
 
-const Project = ({ project }) => (
-  <li className="entry">
-    <div className="entry__title">{project.name}</div>
-    <div className="entry-details">
-      <div className="entry-details__count">{project.vacancies.length}</div>
-      <button className="text-btn _primary">Добавить вакансию</button>
-      <div className="entry-details__buttons">
-        <button className="text-btn">Закрыть проект</button>
-        <button className="text-btn">Удалить</button>
+const Project = ({ project, onProjectToggle, onProjectRemove, onProjectAdd, onVacancyToggle, onVacancyRemove, onVacancyAdd }) => {
+  let statusPlace = null,
+    statusClassName = '',
+    btnClass = '',
+    toggleButtonText = '';
+
+  if (project.status) {
+    statusPlace = <TextButton btnClass='_primary' text='Добавить вакансию' onClickHandler={() => alert('add vacancy!')} />;
+    toggleButtonText = 'Закрыть проект';
+  } else {
+    statusPlace = <div className="entry-details__status _closed">Проект закрыт, сотрудники наняты</div>;
+    statusClassName = '_closed';
+    toggleButtonText = 'Открыть проект';
+    btnClass = '_primary';
+  }
+
+  return (
+    <li className={`entry ${statusClassName}`}>
+      <div className="entry__title">{project.name}</div>
+      <div className="entry-details">
+        <div className="entry-details__count">{formatVacancyCount(project.vacancies.length, 'Вакансия', 'Вакансии', 'Вакансий')}</div>
+        { statusPlace }
+        <div className="entry-details__buttons">
+          <TextButton btnClass={btnClass} text={toggleButtonText} onClickHandler={() => onProjectToggle(project.id)} />
+          <TextButton text='Удалить' onClickHandler={() => onProjectRemove(project.id)} />
+        </div>
       </div>
-    </div>
-    { project.vacancies.length > 0 ? <VacancyList items={project.vacancies} /> : null }
-  </li>
-);
+      <ul className="entry-childs">
+        { project.vacancies.map(item => (
+            <Vacancy 
+              key={item.id} 
+              vacancy={item} 
+              projectId={project.id} 
+              onVacancyToggle={onVacancyToggle} 
+              onVacancyRemove={onVacancyRemove} />
+          ))
+        }
+      </ul>
+    </li>
+)};
 
 export default Project;

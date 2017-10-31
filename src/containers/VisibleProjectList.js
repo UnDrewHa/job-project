@@ -1,18 +1,29 @@
 import React from 'react';
-import ProjectList from './ProjectList';
+import ProjectList from '../components/ProjectList';
 import { connect } from 'react-redux';
-import * as actions from '../actions/index';
+import * as actions from '../actions/';
 
 const getVisibleProjects = (projects, statusFilter, nameFilter) => {
-  if (statusFilter !== '' || nameFilter !== '') {
+  if (statusFilter !== 'all' || nameFilter.length > 0) {
+
     return projects.map(project => {
-      let tempVacancies = null;
-      tempVacancies = filterByStatus(project.vacancies, statusFilter);
-      tempVacancies = filterByName(tempVacancies, nameFilter);
+      let tempVacancies = project.vacancies;
+
+      if (statusFilter !== 'all') {
+        tempVacancies = filterByStatus(tempVacancies, statusFilter);
+      }
+
+      if (nameFilter.length > 0) {
+        tempVacancies = filterByName(tempVacancies, nameFilter);
+      }
+
       return Object.assign({}, project, {
         vacancies: tempVacancies
       });
+    }).filter(project => {
+      return project.vacancies.length > 0
     });
+
   }
 
   return projects;
@@ -20,7 +31,7 @@ const getVisibleProjects = (projects, statusFilter, nameFilter) => {
 
 const filterByStatus = (vacancies, statusFilter) => {
   return vacancies.filter(vacancy => {
-    if (statusFilter === '') return vacancies;
+    if (statusFilter === 'all') return vacancies;
     return vacancy.status === statusFilter;
   });
 };
@@ -39,12 +50,28 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onToggle: id => {
+    onProjectToggle: id => {
       dispatch(actions.toggleProject(id))
     },
 
-    onRemove: id => {
+    onProjectRemove: id => {
       dispatch(actions.removeProject(id))
+    },
+
+    onProjectAdd: (name, id) => {
+      dispatch(actions.addProject(name, id))
+    },
+
+    onVacancyToggle: (id, projectId) => {
+      dispatch(actions.toggleVacancy(id, projectId))
+    },
+
+    onVacancyRemove: (id, projectId) => {
+      dispatch(actions.removeVacancy(id, projectId))
+    },
+
+    onVacancyAdd: (name, projectId, id) => {
+      dispatch(actions.addVacancy(name, projectId, id))
     }
   }
 };

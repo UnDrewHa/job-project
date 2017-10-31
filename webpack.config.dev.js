@@ -1,9 +1,8 @@
-const path = require('path');
-const webpack = require('webpack');
-
 process.env.NODE_ENV = 'development';
 process.env.BABEL_ENV = 'development';
 
+const path = require('path');
+const webpack = require('webpack');
 
 let paths = {
   src: path.resolve(__dirname, 'src'),

@@ -1,16 +1,39 @@
 import React from 'react';
+import TextButton from './TextButton';
 
-const Project = ({ vacancy }) => (
-  <li className="entry _child">
-    <div className="entry__title">{vacancy.name}</div>
-    <div className="entry-details">
-      <div className="entry-details__status">Вакансия открыта, идет подбор кандидатов</div>
-      <div className="entry-details__buttons">
-        <button className="text-btn">Закрыть вакансию</button>
-        <button className="text-btn">Удалить</button>
+const Vacancy = ({ vacancy, projectId, onVacancyToggle, onVacancyRemove }) => {
+  let statusPlace = null,
+    statusClassName = null,
+    toggleButtonText = null,
+    btnClass = '';
+
+  if (vacancy.status) {
+    statusPlace = 'Вакансия открыта, идет подбор кандидатов';
+    toggleButtonText = 'Закрыть вакансию';
+  } else {
+    statusPlace = 'Вакансия закрыта, сотрудник нанят';
+    statusClassName = '_closed'
+    toggleButtonText = 'Открыть вакансию';
+    btnClass = '_primary';
+  }
+
+  return (
+    <li className="entry _child">
+      <div className="entry__title">{vacancy.name}</div>
+      <div className="entry-details">
+        <div className={`entry-details__status ${statusClassName}`}>{statusPlace}</div>
+        <div className="entry-details__buttons">
+          <TextButton 
+            btnClass={btnClass} 
+            text={toggleButtonText} 
+            onClickHandler={() => onVacancyToggle(vacancy.id, projectId)} />
+          <TextButton 
+            text='Удалить' 
+            onClickHandler={() => onVacancyRemove(vacancy.id, projectId)} />
+        </div>
       </div>
-    </div>
-  </li>
-);
+    </li>
+  )
+};
 
-export default Project;
+export default Vacancy;

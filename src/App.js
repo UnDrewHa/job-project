@@ -1,7 +1,7 @@
 import React from 'react';
 import Title from './components/Title';
 import ProjectFilters from './components/ProjectFilters';
-import VisibleProjectList from './components/VisibleProjectList';
+import VisibleProjectList from './containers/VisibleProjectList';
 
 const App = () => {
   return (

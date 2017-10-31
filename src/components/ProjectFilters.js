@@ -1,14 +1,12 @@
 import React from 'react';
+import NameFilter from '../containers/NameFilter';
+import StatusFilter from '../containers/StatusFilter';
 
 const ProjectFilters = () => {
   return (
     <div className="project-filters">
-      <input type="text" className="input" placeholder='Поиск по вакансиям' />
-      <label htmlFor="statusFilter" className="label">
-        <input id="statusFilter" type="checkbox" className="checkbox" />
-        <span></span>
-        Только открытые
-      </label>
+      <NameFilter />
+      <StatusFilter />
       <button className="btn _primary">Добавить проект</button>
     </div>
   );
