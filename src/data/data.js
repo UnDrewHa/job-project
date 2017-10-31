@@ -1,6 +1,10 @@
 const data = {
   statusFilter: 'all',
   nameFilter: '',
+  modal: {
+    modalType: null,
+    modalProps: {}
+  },
   projects: [
     {
       id: '123',

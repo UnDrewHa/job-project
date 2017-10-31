@@ -58,10 +58,6 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.removeProject(id))
     },
 
-    onProjectAdd: (name, id) => {
-      dispatch(actions.addProject(name, id))
-    },
-
     onVacancyToggle: (id, projectId) => {
       dispatch(actions.toggleVacancy(id, projectId))
     },
@@ -70,9 +66,12 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.removeVacancy(id, projectId))
     },
 
-    onVacancyAdd: (name, projectId, id) => {
-      dispatch(actions.addVacancy(name, projectId, id))
-    }
+    onVacancyAdd: (id) => dispatch(actions.showModal('CREATE_MODAL', {
+        createType: 'vacancy',
+        title: 'Новая вакансия',
+        placeholder: 'Название вакансии',
+        projectId: id
+    }))
   }
 };
 

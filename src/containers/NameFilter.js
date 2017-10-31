@@ -1,5 +1,5 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import * as actions from '../actions/';
 
 let NameFilter = ({ dispatch }) => {
@@ -15,6 +15,7 @@ let NameFilter = ({ dispatch }) => {
       onChange={e => onChange(e.target.value)}/>
   )
 }
+
 NameFilter = connect()(NameFilter)
 
 export default NameFilter

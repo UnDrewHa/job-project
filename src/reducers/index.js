@@ -6,7 +6,8 @@ export function projects (state = [], action) {
       return [...state, {
         id: action.id,
         name: action.name,
-        status: true
+        status: true,
+        vacancies: []
       }];
     case 'REMOVE_PROJECT':
       let index = getIndex(state, action.id);
@@ -112,10 +113,28 @@ export function nameFilter (state = '', action) {
   }
 }
 
+export function modal (state = {}, action) {
+  switch(action.type) {
+    case 'SHOW_MODAL':
+      return {
+        modalType: action.modalType,
+        modalProps: action.modalProps
+      };
+    case 'HIDE_MODAL':
+      return {
+        modalType: null,
+        modalProps: {}
+      };
+    default:
+      return state;
+  }
+}
+
 const mainReducer = combineReducers({
   projects,
   statusFilter,
-  nameFilter
+  nameFilter,
+  modal
 });
 
 export default mainReducer;

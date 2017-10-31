@@ -3,14 +3,14 @@ import Vacancy from './Vacancy';
 import {formatVacancyCount} from '../helpers/';
 import TextButton from './TextButton';
 
-const Project = ({ project, onProjectToggle, onProjectRemove, onProjectAdd, onVacancyToggle, onVacancyRemove, onVacancyAdd }) => {
+const Project = ({ project, onProjectToggle, onProjectRemove, onVacancyToggle, onVacancyRemove, onVacancyAdd }) => {
   let statusPlace = null,
     statusClassName = '',
     btnClass = '',
     toggleButtonText = '';
 
   if (project.status) {
-    statusPlace = <TextButton btnClass='_primary' text='Добавить вакансию' onClickHandler={() => alert('add vacancy!')} />;
+    statusPlace = <TextButton btnClass='_primary' text='Добавить вакансию' onClickHandler={() => onVacancyAdd(project.id)} />;
     toggleButtonText = 'Закрыть проект';
   } else {
     statusPlace = <div className="entry-details__status _closed">Проект закрыт, сотрудники наняты</div>;
