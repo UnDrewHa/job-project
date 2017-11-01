@@ -72,4 +72,3 @@ export function hideModal () {
     type: 'HIDE_MODAL'
   }
 }
-

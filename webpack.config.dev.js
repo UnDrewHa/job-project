@@ -19,7 +19,7 @@ const config = {
     path: paths.dist
   },
 
-  devtool: 'inline-source-map',
+  devtool: 'eval',
 
   module: {
     rules: [

@@ -8,7 +8,6 @@ var gulp = require('gulp'),
     notify = require("gulp-notify"),
     cache = require('gulp-cached'),
     reload = browserSync.reload,
-    gulpif = require('gulp-if'),
     argv = require('yargs').argv,
     sourcemaps = require('gulp-sourcemaps'),
     webpack = require('webpack'),
@@ -73,7 +72,7 @@ var gulp = require('gulp'),
         .pipe(prefixer({
             browsers: ['last 4 versions','> 1%','Android 4.4','ios_saf >=7']
         }))
-        .pipe(gulpif(argv.prod, cleancss()))
+        .pipe(cleancss())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(path.build.css))
         .pipe(reload({stream: true}));
