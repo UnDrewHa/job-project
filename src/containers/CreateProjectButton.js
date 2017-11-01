@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/';
-import Button from '../components/Button';
 
-let CreateProjectModal = ({ dispatch }) => {
+const CreateProjectModal = ({ dispatch }) => {
   return (
-    <button className="btn _primary" onClick={() => dispatch(actions.showModal('CREATE_MODAL', {
+    <button 
+      className="btn _primary" 
+      onClick={() => dispatch(actions.showModal('CREATE_MODAL', {
         createType: 'project',
         title: 'Новый проект',
-        placeholder: 'Название проекта'
-    }))}>Добавить проект</button>
+        placeholder: 'Название проекта'}))}>
+      Добавить проект
+    </button>
   )
 }
 
-CreateProjectModal = connect()(CreateProjectModal);
-
-export default CreateProjectModal
+export default connect()(CreateProjectModal);

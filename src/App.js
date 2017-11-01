@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Title from './components/Title';
 import ProjectFilters from './components/ProjectFilters';
 import VisibleProjectList from './containers/VisibleProjectList';
 import RootModal from './containers/RootModal';
@@ -7,9 +6,7 @@ import RootModal from './containers/RootModal';
 const App = () => {
   return (
     <div>
-      <Title>
-        Список проектов
-      </Title>
+      <h1>Список проектов</h1>
       <ProjectFilters />
       <VisibleProjectList />
       <RootModal />

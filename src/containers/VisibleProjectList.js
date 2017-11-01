@@ -3,7 +3,7 @@ import ProjectList from '../components/ProjectList';
 import { connect } from 'react-redux';
 import * as actions from '../actions/';
 
-const getVisibleProjects = (projects, statusFilter, nameFilter) => {
+const getVisibleProjects = ({ projects, statusFilter, nameFilter }) => {
   if (statusFilter !== 'all' || nameFilter.length > 0) {
 
     return projects.map(project => {
@@ -23,7 +23,6 @@ const getVisibleProjects = (projects, statusFilter, nameFilter) => {
     }).filter(project => {
       return project.vacancies.length > 0
     });
-
   }
 
   return projects;
@@ -31,7 +30,6 @@ const getVisibleProjects = (projects, statusFilter, nameFilter) => {
 
 const filterByStatus = (vacancies, statusFilter) => {
   return vacancies.filter(vacancy => {
-    if (statusFilter === 'all') return vacancies;
     return vacancy.status === statusFilter;
   });
 };
@@ -44,37 +42,8 @@ const filterByName = (vacancies, nameFilter) => {
 
 const mapStateToProps = state => {
   return {
-    projects: getVisibleProjects(state.projects, state.statusFilter, state.nameFilter)
+    projects: getVisibleProjects(state)
   }
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onProjectToggle: id => {
-      dispatch(actions.toggleProject(id))
-    },
-
-    onProjectRemove: id => {
-      dispatch(actions.removeProject(id))
-    },
-
-    onVacancyToggle: (id, projectId) => {
-      dispatch(actions.toggleVacancy(id, projectId))
-    },
-
-    onVacancyRemove: (id, projectId) => {
-      dispatch(actions.removeVacancy(id, projectId))
-    },
-
-    onVacancyAdd: (id) => dispatch(actions.showModal('CREATE_MODAL', {
-        createType: 'vacancy',
-        title: 'Новая вакансия',
-        placeholder: 'Название вакансии',
-        projectId: id
-    }))
-  }
-};
-
-const VisibleProjectList = connect(mapStateToProps, mapDispatchToProps)(ProjectList);
-export default VisibleProjectList;
-
+export default connect(mapStateToProps)(ProjectList);

@@ -1,34 +1,31 @@
 import React from 'react';
 import TextButton from './TextButton';
+import * as actions from '../actions/';
+import { connect } from 'react-redux';
 
 const Vacancy = ({ vacancy, projectId, onVacancyToggle, onVacancyRemove }) => {
-  let statusPlace = null,
-    statusClassName = null,
-    toggleButtonText = null,
-    btnClass = '';
+  let statusClassName = '';
 
-  if (vacancy.status) {
-    statusPlace = 'Вакансия открыта, идет подбор кандидатов';
-    toggleButtonText = 'Закрыть вакансию';
-  } else {
-    statusPlace = 'Вакансия закрыта, сотрудник нанят';
+  if (!vacancy.status) {
     statusClassName = '_closed'
-    toggleButtonText = 'Открыть вакансию';
-    btnClass = '_primary';
   }
 
   return (
     <li className="entry _child">
       <div className="entry__title">{vacancy.name}</div>
       <div className="entry-details">
-        <div className={`entry-details__status ${statusClassName}`}>{statusPlace}</div>
+        <div className={`entry-details__status ${statusClassName}`}>
+          { vacancy.status ? 'Вакансия открыта, идет подбор кандидатов' : 'Вакансия закрыта, сотрудник нанят' }
+        </div>
         <div className="entry-details__buttons">
           <TextButton 
-            btnClass={btnClass} 
-            text={toggleButtonText} 
+            status={vacancy.status}
+            buttonType='toggle'
+            contentType='vacancy'
             onClickHandler={() => onVacancyToggle(vacancy.id, projectId)} />
           <TextButton 
-            text='Удалить' 
+            buttonType='delete'
+            contentType='vacancy' 
             onClickHandler={() => onVacancyRemove(vacancy.id, projectId)} />
         </div>
       </div>
@@ -36,4 +33,16 @@ const Vacancy = ({ vacancy, projectId, onVacancyToggle, onVacancyRemove }) => {
   )
 };
 
-export default Vacancy;
+const dispatchToProps = (dispatch) => {
+  return {
+    onVacancyToggle: (id, projectId) => {
+      dispatch(actions.toggleVacancy(id, projectId))
+    },
+
+    onVacancyRemove: (id, projectId) => {
+      dispatch(actions.removeVacancy(id, projectId))
+    }
+  }
+}
+
+export default connect(null, dispatchToProps)(Vacancy);

@@ -22,6 +22,5 @@ let StatusFilter = ({ dispatch }) => {
     </label>
   )
 }
-StatusFilter = connect()(StatusFilter)
 
-export default StatusFilter
+export default connect()(StatusFilter)

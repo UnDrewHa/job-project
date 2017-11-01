@@ -7,20 +7,11 @@ const modalTypes = {
   'CREATE_MODAL': CreateModal
 };
 
-let RootModal = ({modalType, modalProps, dispatch}) => {
+const RootModal = ({modalType}) => {
   if (!modalType) return null;
 
-  const createFunc = {
-    'project': actions.addProject,
-    'vacancy': actions.addVacancy
-  }
-
   const SpecificModal = modalTypes[modalType];
-  return <SpecificModal {...modalProps} onCloseHandler={() => dispatch(actions.hideModal())} onSubmitHandler={(name, project, id) => dispatch(createFunc[modalProps.createType](name, project, id))} />
+  return <SpecificModal />
 }
 
-RootModal = connect()(RootModal)
-
-export default connect(
-  state => state.modal
-)(RootModal)
+export default connect(state => state.modal)(RootModal)
