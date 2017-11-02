@@ -36,7 +36,7 @@ class Project extends Component {
       <li className={`entry ${statusClassName} ${toggledClassName}`}>
         <div className="entry__title" onClick={this.onToggleProject}>{this.props.project.name}</div>
         <div className="entry-details">
-          <div className="entry-details__count">{formatVacancyCount(this.props.project.vacancies.length, 'Вакансия', 'Вакансии', 'Вакансий')}</div>
+          <div className="entry-details__count">{formatVacancyCount(this.props.project.vacancies.length, 'вакансия', 'вакансии', 'вакансий')}</div>
           { this.props.project.status ? (
               <TextButton buttonType='addVacancy' onClickHandler={() => this.props.onVacancyAdd(this.props.project.id)} />
             ) : (
